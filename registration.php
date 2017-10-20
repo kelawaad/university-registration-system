@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>	
+		
 		<script type="text/javascript" src="registration.js"> </script>
+		<script type="text/javascript" src="jquery-3.2.1.js"></script>
+		<script src="my-jquery.js"></script>
 		<link rel="stylesheet"  href="registration.css">
-
 		<title>University Registration System</title>
 		
 	</head>
@@ -26,12 +28,8 @@
 				<br/>
 				<input type="submit" value="Sign Up">
 			</form>
+			<br/>
 		</div>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
 		<div id="login-form-div">
 			<form id="login-form" action="loginValidation.php" method="post">
 				<h3>Username</h3>

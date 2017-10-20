@@ -8,6 +8,10 @@
 	$password   = "";
 	$dbname     = "";
 
+	// TODO:
+	// Verify username and password are correct
+	// Start a new session
+	// Redirect the user to the corresponding webpage
 	
 
 

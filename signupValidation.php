@@ -17,6 +17,7 @@
 
 	// TODO:
 	// Verify username and passwords are unique and create a new entry in the table
+	// Start a new session
 	// Redirect the user to the corresponding webpage
 
 	// Write query to validate that email and usernames are unique 
