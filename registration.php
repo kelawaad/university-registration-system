@@ -12,37 +12,42 @@
 
 	<body>
 		<header id="main-header">
-			<h1>University Registration System</h1>
+			<div class="container">
+				<h1>University Registration System</h1>
+			</div>
 		</header>
-
-		<div id="registration-form-div">
-			<form id="registration-form" action="signupValidation.php" method="post" onsubmit="return validateForm()">
-				<h3>E-mail</h3>
-				<input type = "text" name ="email" ID="email" placeholder="Email"/>
-				<br/>				
-				<h3>Username</h3>				
-				<input type = "text" name ="username" ID="username"  placeholder="Username"/>
-				<h3>Password</h3>				
-				<input type = "password" name ="password" ID="password" placeholder="Password"/>
+		<div id="forms-div">
+			<img src="images/left-arrow.jpg" id="previous"/>
+			<img src="images/right-arrow.png" id="next"/>
+			<div id="registration-form-div">
+				<form id="registration-form" action="signupValidation.php" method="post" onsubmit="return validateForm()">
+					<h3>E-mail</h3>
+					<input type = "text" name ="email" ID="email" placeholder="Email"/>
+					<br/>				
+					<h3>Username</h3>				
+					<input type = "text" name ="username" ID="username"  placeholder="Username"/>
+					<h3>Password</h3>				
+					<input type = "password" name ="password" ID="password" placeholder="Password"/>
+					<br/>
+					<br/>
+					<input type="submit" value="Sign Up">
+				</form>
 				<br/>
-				<br/>
-				<input type="submit" value="Sign Up">
-			</form>
-			<br/>
+			</div>
+			<div id="login-form-div">
+				<form id="login-form" action="loginValidation.php" method="post">
+					<h3>Username</h3>
+					<input type="text" name="username" id="email" placeholder="Username"/>
+					<br/>
+					<h3>Password</h3>
+					<input type="password" name="password" id="password" placeholder="Password"/>
+					<br/>
+					<br/>
+					<input type="submit" value="Login"/>
+				</form>
+			</div>
+			
 		</div>
-		<div id="login-form-div">
-			<form id="login-form" action="loginValidation.php" method="post">
-				<h3>Username</h3>
-				<input type="text" name="username" id="email" placeholder="Username"/>
-				<br/>
-				<h3>Password</h3>
-				<input type="password" name="password" id="password" placeholder="Password"/>
-				<br/>
-				<br/>
-				<input type="submit" value="Login"/>
-			</form>
-		</div>
-
 	</body>
 
 

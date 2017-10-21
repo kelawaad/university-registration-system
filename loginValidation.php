@@ -1,4 +1,5 @@
 <?php
+	$email    = $_POST["email"];
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 
@@ -8,11 +9,27 @@
 	$password   = "";
 	$dbname     = "";
 
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	} 
+
 	// TODO:
-	// Verify username and password are correct
+	// Verify username and passwords are unique and create a new entry in the table
 	// Start a new session
 	// Redirect the user to the corresponding webpage
-	
 
+	// Write query to validate that email and usernames are unique 
+	//$sql = "SELECT FROM Student()"
+	//$sql = "SELECT * FROM user WHERE user_name = $username";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Username is already used, please choose another username";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
+	$conn->close();
 
 ?>
