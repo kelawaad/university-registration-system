@@ -11,10 +11,6 @@
 
 	$conn = new mysqli($servername, $db_username, $db_password, $dbname);
 
-	// echo 'A user is logging in: '.$username;
-	// echo '<br/>';
-	// echo 'password: '.$password;
-	// echo '<br/>';
 	//$password = md5($password);
 
 	if ($conn->connect_error) {
@@ -30,7 +26,6 @@
         if($row["password"] == $password)
         {
         	$_SESSION['username'] = $username;
-        	//echo "0";
         	if($row["dept_id"] != null)
         	{
         		echo "1";

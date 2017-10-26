@@ -27,7 +27,7 @@
 				<img src="images/right-arrow.png" id="next"/>
 			</div>
 			<div id="registration-form-div">
-				<form id="registration-form" action="signupValidation.php" method="post" onsubmit="return validateRegistrationForm()">
+				<form id="registration-form" action="signupValidation.php" method="post">
 					<h3>E-mail</h3>
 					<input type = "text" name ="email" ID="register-email" placeholder="Email"/>
 					<br/>				
@@ -42,7 +42,7 @@
 				<br/>
 			</div>
 			<div id="login-form-div">
-				<form id="login-form" action="loginValidation.php" method="post" onsubmit="return validateLoginForm()">
+				<form id="login-form" action="loginValidation.php" method="post">
 					<h3>Username</h3>
 					<input type="text" name="username" id="login-username" placeholder="Username"/>
 					<h3>Password</h3>

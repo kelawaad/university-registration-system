@@ -84,7 +84,6 @@ $("document").ready(function() {
 		var url = $form.attr( 'action' );
 		var username = $("#login-username").val();
 		var password = $("#login-password").val();
-		var data = {username: username, password:password};	
 		$.ajax({
 			url: url,
 			type:  "POST",
@@ -101,6 +100,38 @@ $("document").ready(function() {
 				}
 				else
 					console.log("Should appear an error");
+			}
+		});
+	});
+
+	$("#registration-form").submit(function(e) {
+		e.preventDefault();
+
+		if(!validateRegistrationForm())
+			return;
+		
+		var $form = $(this);
+		var url = $form.attr('action');
+		
+		var username = $("#register-username").val();
+		var password = $("#register-password").val();
+		var email = $("#register-email").val();
+
+		$.ajax({
+			url: url,
+			type: "POST",
+			data: {email: email, username: username, password: password},
+			success: function(response_data) {
+				console.log(response_data);
+				if(response_data === "0") {
+					console.log("tamam");
+				}
+				else if(response_data === "-1"){ 
+					console.log("Username already exists");
+				}
+				else if(response_data === "-2"){
+					console.log("Email is already in use");
+				}
 			}
 		});
 	});
