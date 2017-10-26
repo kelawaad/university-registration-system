@@ -1,10 +1,13 @@
+<?php
+	session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>	
-		
-		<script type="text/javascript" src="registration.js"> </script>
 		<script type="text/javascript" src="jquery-3.2.1.js"></script>
-		<script src="my-jquery.js"></script>
+		<script type="text/javascript" src="registration.js"></script>
 		<link rel="stylesheet"  href="registration.css">
 		<title>University Registration System</title>
 		
@@ -13,21 +16,25 @@
 	<body>
 		<header id="main-header">
 			<div class="container">
-				<h1>University Registration System</h1>
+				<h3>Alexandria University</h3>
 			</div>
 		</header>
 		<div id="forms-div">
-			<img src="images/left-arrow.jpg" id="previous"/>
-			<img src="images/right-arrow.png" id="next"/>
+			<div id="previous-div">
+				<img src="images/left-arrow.jpg" id="previous"/>
+			</div>
+			<div id="next-div">
+				<img src="images/right-arrow.png" id="next"/>
+			</div>
 			<div id="registration-form-div">
-				<form id="registration-form" action="signupValidation.php" method="post" onsubmit="return validateForm()">
+				<form id="registration-form" action="signupValidation.php" method="post" onsubmit="return validateRegistrationForm()">
 					<h3>E-mail</h3>
-					<input type = "text" name ="email" ID="email" placeholder="Email"/>
+					<input type = "text" name ="email" ID="register-email" placeholder="Email"/>
 					<br/>				
 					<h3>Username</h3>				
-					<input type = "text" name ="username" ID="username"  placeholder="Username"/>
+					<input type = "text" name ="username" ID="register-username"  placeholder="Username"/>
 					<h3>Password</h3>				
-					<input type = "password" name ="password" ID="password" placeholder="Password"/>
+					<input type = "password" name ="password" ID="register-password" placeholder="Password"/>
 					<br/>
 					<br/>
 					<input type="submit" value="Sign Up">
@@ -35,17 +42,18 @@
 				<br/>
 			</div>
 			<div id="login-form-div">
-				<form id="login-form" action="loginValidation.php" method="post">
+				<form id="login-form" action="loginValidation.php" method="post" onsubmit="return validateLoginForm()">
 					<h3>Username</h3>
-					<input type="text" name="username" id="email" placeholder="Username"/>
-					<br/>
+					<input type="text" name="username" id="login-username" placeholder="Username"/>
 					<h3>Password</h3>
-					<input type="password" name="password" id="password" placeholder="Password"/>
+					<input type="password" name="password" id="login-password" placeholder="Password"/>
 					<br/>
 					<br/>
 					<input type="submit" value="Login"/>
 				</form>
+
 			</div>
+
 			
 		</div>
 	</body>

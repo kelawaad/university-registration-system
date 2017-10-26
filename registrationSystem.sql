@@ -4,15 +4,14 @@ use registrationSystem;
 	Create Table Department(
 		dept_id int Auto_Increment,
 		dept_name varchar(50) unique not null,
-		description varchar(50),
 		PRIMARY key(dept_id)
 	);
 
 	Create Table User(
 		user_id int Auto_Increment,
-		username varchar(20) not null,
-		password varchar(200) not null,
-		registration_date timestamp,
+		username varchar(20) unique not null,
+		password varchar(50) not null,
+		email varchar(30) unique not null,
 		dept_id int,
 		PRIMARY key(user_id),
 		Foreign key(dept_id) REFERENCES Department(dept_id)
@@ -29,8 +28,8 @@ use registrationSystem;
 		Foreign key(dept_id) REFERENCES Department(dept_id)
 	);
 	
-	INSERT into Department (dept_name) values ("Computer & Communications");
-	INSERT into Department (dept_name) values ("Electromechanics");
-	INSERT into Department (dept_name) values ("Oil & Petrochemicals");
-	INSERT into Department (dept_name) values ("Construction & Architecture");
-	INSERT into Department (dept_name) values ("Offshore");
+	INSERT into Department (dept_name) values ('Computer & Communications');
+	INSERT into Department (dept_name) values ('Electromechanics');
+	INSERT into Department (dept_name) values ('Oil & Petrochemicals');
+	INSERT into Department (dept_name) values ('Construction & Architecture');
+	INSERT into Department (dept_name) values ('Offshore');

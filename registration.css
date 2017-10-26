@@ -12,6 +12,11 @@ body {
 	background-color: #555;
 	color:white;
 	text-align: center;
+	height: 5%;
+}
+
+ul {
+	list-style: none;
 }
 
 .container {
@@ -25,20 +30,51 @@ body {
 	font-size:40px;
 }
 
+#login-form-div {
+	padding-top: 5%;
+}
+
+#previous-div {
+	left:0%;
+	width:80px;
+	height:90%;
+	position: absolute;
+	transition: background-color 0.2s;
+}
+#next-div {
+	right:0%;
+	width:80px;
+	height:90%;
+	position: absolute;
+	transition: background-color 0.2s;
+}
+
+#previous-div:hover {
+	background-color: #e7e7e7
+}
+
+#next-div:hover {
+	background-color: #e7e7e7
+}
 
 #previous {
-	float:left;
+	position: relative;
+	object-position: center;
+	top:45%;
+	z-index: 200;
 }
 
 #next {
-	float:right;
+	position: relative;
+	object-position: center;
+	top:45%;
+	z-index: 200;	
 }
 
 img {
 	opacity: 0.5;
 	height:60px;
 	width:60px;
-	align:left;
 }
 
 input[type=text], [type=password]  {
@@ -46,10 +82,11 @@ input[type=text], [type=password]  {
 	padding:12px 20px;
 }
 
-input[type=submit] {
+input[type=submit], button {
 	width: 15%;
 	padding: 10px;
 	font-size:20px;
+	position: center;
 	background-color: white;
 	text-decoration: none;
 	color:black;
@@ -57,6 +94,6 @@ input[type=submit] {
 	border-radius: 5px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
