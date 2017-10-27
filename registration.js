@@ -1,3 +1,5 @@
+var showingRegistration = true;
+
 function validateRegistrationForm() {
 	let email = document.getElementById("register-email").value;
 	let name = document.getElementById("register-username").value;
@@ -17,8 +19,11 @@ function validateRegistrationForm() {
 		alert("Please enter a password! ");
 		return false;
 	}
+	// if(!ValidateEmail())
+	// 	return false;
 	return true;
 }
+
 
 function validateLoginForm() {
 	let username = document.getElementById("login-username").value;
@@ -37,8 +42,49 @@ function validateLoginForm() {
 	return true;
 }
 
+function ValidateEmail(mail)   
+{  
+ 	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))  
+  	{  
+    	return true;  
+  	} 
+  	else 
+  	{ 
+    	alert("You have entered an invalid email address!");  
+    	return false;
+	}
+}  
+
 function validatePassword(password) {
 	
+}
+
+function showLogin()
+{
+	if(!showingRegistration)
+		return;
+	showingRegistration = false;
+	$('#registration-form-div').fadeOut('fast', function(){
+	        $('#login-form-div').fadeIn('fast');
+    });
+    $("#next-div").fadeOut('fast', function() {
+  		$("#previous-div").fadeIn('fast');
+  	});
+
+}
+
+function showRegistration()
+{
+	if(showingRegistration)
+		return;
+	showingRegistration = true;
+    $('#login-form-div').fadeOut('fast', function(){
+        $('#registration-form-div').fadeIn('fast');
+    });
+  	$("#previous-div").fadeOut('fast', function() {
+  		$("#next-div").fadeIn('fast');
+  	});
+  	
 }
 
 
@@ -48,23 +94,24 @@ $("document").ready(function() {
 
 	$("#next-div").click(function(e){
 	    e.preventDefault();
-	    $('#registration-form-div').fadeOut('fast', function(){
-	        $('#login-form-div').fadeIn('fast');
-	    });
-	    $("#next-div").fadeOut('fast', function() {
-	  		$("#previous-div").fadeIn('fast');
-	  	});
+	    showLogin();
+	    
 	});
 
 	$("#previous-div").click(function(e){
 	    e.preventDefault();
-	    $('#login-form-div').fadeOut('fast', function(){
-	        $('#registration-form-div').fadeIn('fast');
-	    });
-	  	$("#previous-div").fadeOut('fast', function() {
-	  		$("#next-div").fadeIn('fast');
-	  	});
+	    showRegistration();
 	});
+
+	$(document).keydown(function(e) {
+		//Check first if a textbox is in focus
+	    let key = e.which;
+	    if(key == 39)
+	    	showLogin();
+	    else if(key == 37)
+	    	showRegistration();
+	});
+
 
 	$("#registration-form").each(function() {
 		this.reset();
@@ -99,7 +146,9 @@ $("document").ready(function() {
 					window.location.href = "courses.php";
 				}
 				else
-					console.log("Should appear an error");
+				{
+					alert("Username or password is incorrect.");
+				}
 			}
 		});
 	});
@@ -122,15 +171,28 @@ $("document").ready(function() {
 			type: "POST",
 			data: {email: email, username: username, password: password},
 			success: function(response_data) {
-				console.log(response_data);
-				if(response_data === "0") {
+				console.log(typeof response_data);
+				var response = [-1, -1, -1, -1];
+				for(var i = 0;i < response.length;i++)
+				{
+					if(response_data.includes(String(i)))
+						response[i] = 1;
+				}
+				if(response[0] === 1) {
 					console.log("tamam");
+					window.location.href = "chooseDepartment.php";
 				}
-				else if(response_data === "-1"){ 
-					console.log("Username already exists");
-				}
-				else if(response_data === "-2"){
+				else if(response[1] === 1){ 
 					console.log("Email is already in use");
+					alert("Email alreay in use!!");
+					
+				}
+				else if(response[2] === 1){
+					console.log("Username already exists");
+					alert("Username already exists");
+				}
+				else if(response[3] === 1) {
+
 				}
 			}
 		});
