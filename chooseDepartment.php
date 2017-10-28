@@ -19,20 +19,39 @@
 	$result = mysqli_query($conn, $getDepartmentsQuery);
 	
 
-	//$i = 0;
-	// for($i = 0;i < mysqli_num_rows($result);$i = $i + 1) {
-	// 	$row = mysqli_fetch_assoc($result);
-	// 	echo $row["dept_name"].'<br/>';
-	// }
+	// Show the list of departments
+	$num_rows = mysqli_num_rows($result);
+
 	$conn->close();
 ?>
 
 <html>
+	<head>
+		<link rel="stylesheet"  href="chooseDepartment.css">
+		<title>Choose your department</title>
+	</head>
 	<body>
+		<header id="main-header">
+			<div class="container">
+				<h3>Alexandria University</h3>
+			</div>
+		</header>
 
-		Welcome <?php echo $username; ?> <br/>
-		Your email address is: <?php ?>
+		<div id="departments-table-div">
+			<table id="departments-table" unselectable="on" onselectstart="return false;" onmousedown="return false;">
 
+				<tbody>
+					<tr><th id="table-header" colspan="2">Departments</th></tr>
+					<?php 
+						for($i = 0;$i < $num_rows; $i++) {
+							$row = mysqli_fetch_assoc($result);
+							echo '<tr><td id="dept_id'.$row["dept_id"].'">'.$row["dept_name"].'</td></tr>';
+						}
+					?>
+				</tbody>
+
+			</table>
+		</div>
 
 	</body>
 </html> 
