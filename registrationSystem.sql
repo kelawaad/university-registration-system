@@ -18,13 +18,12 @@ use registrationSystem;
 	);
 
 	Create Table Course(
-		course_id int Auto_Increment,
-		course_name varchar(30) not null,
-		course_description varchar(50) not null,
+		course_code varchar(10) unique not null,
+		course_name varchar(50) not null,
 		instructor_name varchar(30) not null,
 		credit_hours int not null,
 		dept_id int,
-		PRIMARY key(course_id),
+		PRIMARY key(course_code),
 		Foreign key(dept_id) REFERENCES Department(dept_id)
 	);
 	
