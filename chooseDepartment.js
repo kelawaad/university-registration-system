@@ -16,9 +16,19 @@ $("document").ready(function() {
 	});
 
 	$("#yes-btn").click(function() {
-		alert(dept_name + dept_id);
-		
-		
+		alert(dept_name + dept_id);	
+	});
+
+	$(window).click(function(e) {
+		if(e.target == modal)
+			modal.style.display = "none";
+	});
+
+	$(document).keydown(function(e) {
+		//Check first if a textbox is in focus
+	    let key = e.which;
+		if(key == 27 && modal.style.display !== "none")
+			modal.style.display = "none";
 	});
 
 });
