@@ -26,6 +26,7 @@ table {
 	text-align: center;
 	margin: 20px auto;
 	font-size: 28px;
+	border-spacing: 0px;
 }
 
 #table-header {
@@ -66,9 +67,50 @@ th, td {
 	border-bottom: 1px solid #ddd;
 }
 
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4);
+}
 
+.modal-content {
+    background-color: #fefefe;
+    margin: 18% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+}
 
+#confirmation-box-content {
+	font-size:25px;
+	text-align: center;
+	line-height: 1.5em;
 
+}
+
+button {
+	font-size:13px;
+	display: inline-block;
+	width: 15%;
+	padding: 10px;
+	text-decoration: none;
+	color:black;
+	border: 2px solid #555;
+	border-radius: 3px;
+	transition:box-shadow 0.1s;
+	margin-left: 27%;
+	margin-right: -13%;
+}
+
+button:hover {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 
 
