@@ -27,22 +27,27 @@
 
 <html>
 	<head>
-		<link rel="stylesheet"  href="chooseDepartment.css">
-		<script type="text/javascript" src="jquery-3.2.1.js"></script>
-		<script type="text/javascript" src="chooseDepartment.js"></script>
+		<script>
+			var username = <?php 
+				echo "'$username'";
+			 ?>;
+		</script>
+		<link rel="stylesheet"  href="css/chooseDepartment.css">
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="js/chooseDepartment.js"></script>
 		<title>Choose your department</title>
 	</head>
 	<body>
 		<header id="main-header">
 			<div class="container">
-				<h3>Alexandria University</h3>
+				<h3 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h3>
 			</div>
 		</header>
 
 		<div id="myModal" class="modal">
 		 	<div class="modal-content">
 		    	<span class="close"></span>
-		    	<p id="confirmation-box-content"></p>
+		    	<p id="confirmation-box-content" unselectable="on" onselectstart="return false;" onmousedown="return false;"></p>
 		    	<button id="yes-btn">Yes</button>
 		    	<button id="no-btn">No</button>
 	  		</div>

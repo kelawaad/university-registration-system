@@ -16,7 +16,20 @@ $("document").ready(function() {
 	});
 
 	$("#yes-btn").click(function() {
-		alert(dept_name + dept_id);	
+		$.ajax({
+			url: 'editDepartment.php',
+			method: "POST",
+			data: {username:username, dept_id: dept_id},
+			success: function(data) {
+				console.log(data);
+				if(data === "0")
+				{
+					window.location.href = "courses.php";
+				} else {
+					
+				}
+			}
+		});
 	});
 
 	$(window).click(function(e) {

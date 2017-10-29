@@ -6,9 +6,9 @@
 <!DOCTYPE html>
 <html>
 	<head>	
-		<script type="text/javascript" src="jquery-3.2.1.js"></script>
-		<script type="text/javascript" src="registration.js"></script>
-		<link rel="stylesheet"  href="registration.css">
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="js/registration.js"></script>
+		<link rel="stylesheet"  href="css/registration.css">
 		<title>University Registration System</title>
 		
 	</head>
@@ -51,8 +51,9 @@
 					<br/>
 					<input type="submit" value="Login"/>
 				</form>
-
+					<a href="#" id="forgot-username-password-link">Forgot Username/Password</a>
 			</div>
+
 
 			
 		</div>

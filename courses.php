@@ -32,13 +32,13 @@
 <html>
 	<head> 
 		<title>Courses</title>
-		<link rel="stylesheet"  href="courses.css">
+		<link rel="stylesheet"  href="css/courses.css">
 	</head>
 	
 	<body>
 		<header id="main-header">
 			<div class="container">
-				<h3 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h3>
+				<h2 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h2>
 			</div>
 		</header>
 		
@@ -47,7 +47,7 @@
 
 				<tbody>
 					<tr><th id="table-header" colspan="4">Courses</th></tr>
-					<tr>
+					<tr id="table-head">
 						<th>Code</th>
 						<th>Course</th>
 						<th>Instructor</th>
