@@ -3,8 +3,6 @@
 	$username = $_SESSION["username"];
 	$dept_id = $_SESSION["dept_id"];
 
-	echo 'PHP';
-
 	// Set up the connection to the database
 	$servername = "localhost";
 	$db_username   = "root";
@@ -18,16 +16,13 @@
 	}
 
 	// Get the list of courses offered by the department of the user
-	$getCoursesQuery = "SELECT * from course WHERE dept_id = '$dept_id'";
-	$result = mysqli_query($conn, $getCoursesQuery);	
+	$getCoursesQuery1 = "SELECT * from course WHERE dept_id = '$dept_id'";
+	$result1 = mysqli_query($conn, $getCoursesQuery1);	
+	$num_rows1 = mysqli_num_rows($result1);
 
-	$num_rows = mysqli_num_rows($result);
-	echo 'Num rows: '.$num_rows.'<br/>';
-	for($i = 0; $i < $num_rows; $i++) {
-		$row = mysqli_fetch_assoc($result);
-		echo 'Course ID: '.$row["course_id"].'</br>Course Name: '.$row["course_name"].'<br/>Instuctor: '.$row["instructor_name"].'<br/>Credit Hours: '.$row["credit_hours"];
-		echo '<br/><br/>';
-	}
+	$getCoursesQuery2 = "SELECT * from course WHERE dept_id = 6";
+	$result2 = mysqli_query($conn, $getCoursesQuery2);
+	$num_rows2 = mysqli_num_rows($result2);
 
 	$conn->close();
 
@@ -37,14 +32,70 @@
 <html>
 	<head> 
 		<title>Courses</title>
+		<link rel="stylesheet"  href="courses.css">
 	</head>
 	
 	<body>
-		<h1 id="main-title">Registered Courses</h1>
-		<?php
-			echo "<h1>hello</h1>".$username.'<br/>';
-		?>		
-		<h1> END </h1>
+		<header id="main-header">
+			<div class="container">
+				<h3 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h3>
+			</div>
+		</header>
+		
+		<div id="courses-table-div">
+			<table id="courses-table" unselectable="on" onselectstart="return false;" onmousedown="return false;">
+
+				<tbody>
+					<tr><th id="table-header" colspan="4">Courses</th></tr>
+					<tr>
+						<th>Code</th>
+						<th>Course</th>
+						<th>Instructor</th>
+						<th>CHs</th>
+					</tr>
+					<tr>
+						<td>CC372</td>
+						<td>Analysis and Design of Algorithms</td>
+						<td>Amr Elmasry</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>CC372</td>
+						<td>Analysis and Design of Algorithms</td>
+						<td>Amr Elmasry</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>CC372</td>
+						<td>Analysis and Design of Algorithms</td>
+						<td>Amr Elmasry</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>CC372</td>
+						<td>Analysis and Design of Algorithms</td>
+						<td>Amr Elmasry</td>
+						<td>3</td>
+					</tr>
+					<?php 
+						for($i = 0;$i < $num_rows1; $i++) {
+							$row = mysqli_fetch_assoc($result1);
+							echo '<tr><td>'.$row["course_name"].'</td>';
+							echo '<td>'.$row["credit_hours"].'</td>';
+							echo '<td>'.$row["instructor_name"].'</td></tr>';
+						}
+
+						for($i = 0; $i < $num_rows2; $i++) {
+							$row = mysqli_fetch_assoc($result2);
+							echo '<tr><td>'.$row["course_name"].'</td>';
+							echo '<td>'.$row["credit_hours"].'</td>';
+							echo '<td>'.$row["instructor_name"].'<td></tr>';
+						}
+					?>
+				</tbody>
+
+			</table>
+		</div>	
 	</body>
 </html>
 
