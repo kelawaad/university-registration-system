@@ -120,6 +120,10 @@ $("document").ready(function() {
 
 	$(document).keydown(function(e) {
 		//Check first if a textbox is in focus
+		if($("#login-username").is(":focus") || $("#login-password").is(":focus"))
+			return;
+		if($("#register-username").is(":focus") || $("#register-passwrd").is(":focus") || $("#register-email").is(":focus"))
+			return;
 	    let key = e.which;
 	    if(key == 39)
 	    	showLogin();

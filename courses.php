@@ -1,5 +1,11 @@
 <?php
 	session_start();
+	if(!isset($_SESSION["username"]) || !isset($_SESSION["dept_id"]))
+	{
+		header("Location: registration.php");
+		//echo '<script type="text/javascript">window.location.href="registration.php"</script>';
+	}
+
 	$username = $_SESSION["username"];
 	$dept_id = $_SESSION["dept_id"];
 
@@ -38,7 +44,7 @@
 	<body>
 		<header id="main-header">
 			<div class="container">
-				<h2 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h2>
+				<h2 unselectable="on" onselectstart="return false;" onmousedown="return false;"  id="main-title"><?php echo 'Welcome '.$username; ?></h2>
 			</div>
 		</header>
 		
@@ -53,43 +59,21 @@
 						<th>Instructor</th>
 						<th>CHs</th>
 					</tr>
-					<tr>
-						<td>CC372</td>
-						<td>Analysis and Design of Algorithms</td>
-						<td>Amr Elmasry</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>CC372</td>
-						<td>Analysis and Design of Algorithms</td>
-						<td>Amr Elmasry</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>CC372</td>
-						<td>Analysis and Design of Algorithms</td>
-						<td>Amr Elmasry</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>CC372</td>
-						<td>Analysis and Design of Algorithms</td>
-						<td>Amr Elmasry</td>
-						<td>3</td>
-					</tr>
 					<?php 
 						for($i = 0;$i < $num_rows1; $i++) {
 							$row = mysqli_fetch_assoc($result1);
-							echo '<tr><td>'.$row["course_name"].'</td>';
-							echo '<td>'.$row["credit_hours"].'</td>';
-							echo '<td>'.$row["instructor_name"].'</td></tr>';
+							echo '<tr><td>'.$row["course_code"].'</td>';
+							echo '<td>'.$row["course_name"].'</td>';
+							echo '<td>'.$row["instructor_name"].'</td>';
+							echo '<td>'.$row["credit_hours"].'</td></tr>';
 						}
 
 						for($i = 0; $i < $num_rows2; $i++) {
 							$row = mysqli_fetch_assoc($result2);
-							echo '<tr><td>'.$row["course_name"].'</td>';
-							echo '<td>'.$row["credit_hours"].'</td>';
-							echo '<td>'.$row["instructor_name"].'<td></tr>';
+							echo '<tr><td>'.$row["course_code"].'</td>';
+							echo '<td>'.$row["course_name"].'</td>';
+							echo '<td>'.$row["instructor_name"].'</td>';
+							echo '<td>'.$row["credit_hours"].'</td></tr>';
 						}
 					?>
 				</tbody>

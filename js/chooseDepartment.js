@@ -1,7 +1,9 @@
 var dept_name;
 var dept_id;
+var current_department_index;
 
 $("document").ready(function() {
+	current_department_index = -1;
 	$("td").click(function(e) {
 		let row_id = e.target.id;
 		dept_id = row_id[row_id.length - 1];
@@ -38,10 +40,19 @@ $("document").ready(function() {
 	});
 
 	$(document).keydown(function(e) {
-		//Check first if a textbox is in focus
+		// down 40
+		// up 38
 	    let key = e.which;
 		if(key == 27 && modal.style.display !== "none")
 			modal.style.display = "none";
+		if(key == 40 || key == 38) {
+			if(key == 40)
+				current_department_index++;
+			else if(key == 38)
+				current_department_index--;
+
+			
+		}
 	});
 
 });

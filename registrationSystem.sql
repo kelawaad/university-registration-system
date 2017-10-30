@@ -1,4 +1,3 @@
-create DATABASE registrationSystem ;
 use registrationSystem;
 
 	Create Table Department(

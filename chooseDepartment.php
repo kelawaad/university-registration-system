@@ -1,5 +1,17 @@
 <?php	
 	session_start();
+
+	if(!isset($_SESSION["username"]))
+	{
+		header("Location: registration.php");
+		//echo '<script type="text/javascript">window.location.href="registration.php"</script>';
+	}
+	if(isset($_SESSION["dept_id"]))
+	{
+		header("Location: courses.php");
+		//echo '<script type="text/javascript">window.location.href="courses.php"</script>';
+	}
+
 	$username = $_SESSION["username"];
 
 	// Set up the database connection
@@ -61,7 +73,8 @@
 					<?php 
 						for($i = 0;$i < $num_rows; $i++) {
 							$row = mysqli_fetch_assoc($result);
-							echo '<tr><td id="dept_id'.$row["dept_id"].'">'.$row["dept_name"].'</td></tr>';
+							if($row["dept_id"] != 6)
+								echo '<tr><td id="dept_id'.$row["dept_id"].'">'.$row["dept_name"].'</td></tr>';
 						}
 					?>
 				</tbody>
