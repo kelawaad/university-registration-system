@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="js/registration.js"></script>
 		<link rel="stylesheet"  href="css/registration.css">
+		<link rel="icon" href="images/university_favicon.ico">
 		<title>University Registration System</title>
 		
 	</head>

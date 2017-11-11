@@ -41,6 +41,7 @@
 		<link rel="stylesheet"  href="css/courses.css">
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="js/courses.js"></script>
+		<link rel="icon" href="images/university_favicon.ico">
 	</head>
 	
 	<body>
