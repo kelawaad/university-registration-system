@@ -3,6 +3,7 @@
 	if(!isset($_SESSION["username"]) || !isset($_SESSION["dept_id"]))
 	{
 		header("Location: registration.php");
+		die();
 		//echo '<script type="text/javascript">window.location.href="registration.php"</script>';
 	}
 
@@ -39,12 +40,15 @@
 	<head> 
 		<title>Courses</title>
 		<link rel="stylesheet"  href="css/courses.css">
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="js/courses.js"></script>
 	</head>
 	
 	<body>
 		<header id="main-header">
 			<div class="container">
 				<h2 unselectable="on" onselectstart="return false;" onmousedown="return false;"  id="main-title"><?php echo 'Welcome '.$username; ?></h2>
+				<p id="logout-link">Logout</p>
 			</div>
 		</header>
 		

@@ -1,6 +1,7 @@
 <?php
 	
 	session_start();
+    $_SESSION["dept_id"] = null;
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
@@ -34,8 +35,8 @@
         	// If the user already chose a department, store the dept_id in the SESSION variable
         	if($row["dept_id"] != null)
         	{
+                $_SESSION["dept_id"] = $row["dept_id"];
         		echo "1"; // Successful login, go to the courses page
-        		$_SESSION["dept_id"] = $row["dept_id"];
         	}
         	else
         		echo "0"; // Successful login, go to the departments page

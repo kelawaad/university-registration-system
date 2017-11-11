@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	session_unset();
 
 ?>
 
@@ -16,7 +17,7 @@
 	<body>
 		<header id="main-header">
 			<div class="container">
-				<h3>Alexandria University</h3>
+				<h3 unselectable="on" onselectstart="return false;" onmousedown="return false;">Alexandria University</h3>
 			</div>
 		</header>
 		<div id="forms-div">

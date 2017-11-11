@@ -1,16 +1,12 @@
 <?php	
 	session_start();
 
-	if(!isset($_SESSION["username"]))
-	{
-		header("Location: registration.php");
-		//echo '<script type="text/javascript">window.location.href="registration.php"</script>';
-	}
-	if(isset($_SESSION["dept_id"]))
-	{
-		header("Location: courses.php");
-		//echo '<script type="text/javascript">window.location.href="courses.php"</script>';
-	}
+	 if(!isset($_SESSION["username"]))
+	 {
+	 	header("Location: registration.php");
+	 	die();
+	 	//echo '<script type="text/javascript">window.location.href="registration.php"</script>';
+	 }
 
 	$username = $_SESSION["username"];
 
@@ -26,6 +22,17 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}	
 
+
+	$getUserQuery = "SELECT dept_id from user WHERE username='$username';";
+	$result1 = $conn->query($getUserQuery);
+	$row1 = mysqli_fetch_assoc($result1);
+	$dept_id = $row1["dept_id"];
+
+	if($dept_id != null && $dept_id != "")
+	{
+		header("Location: courses.php");
+		die();
+	}
 	// Get the list of departments
 	$getDepartmentsQuery = "SELECT * from department";
 	$result = mysqli_query($conn, $getDepartmentsQuery);
