@@ -19,8 +19,8 @@ function validateRegistrationForm() {
 		alert("Please enter a password! ");
 		return false;
 	}
-	// if(!ValidateEmail())
-	// 	return false;
+	 if(!ValidateEmail(email) || !validatePassword(password))
+	 	return false;
 	return true;
 }
 
@@ -44,7 +44,8 @@ function validateLoginForm() {
 
 function ValidateEmail(mail)   
 {  
- 	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))  
+	var patt1 = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+ 	if (patt1.test(mail))  
   	{  
     	return true;  
   	} 
@@ -56,7 +57,16 @@ function ValidateEmail(mail)
 }  
 
 function validatePassword(password) {
-	
+	var patt1 = new RegExp("[!@#$%^&*()><?/`~+=_-}{']");
+	var patt2 = new RegExp("[0-9]");
+	var patt3 = new RegExp("[a-z]");
+	var patt4 = new RegExp("[A-Z]");
+	if(!patt1.test(password) || !patt2.test(password) || !patt3.test(password) || !patt4.test(password) || password.length < 6)
+	{
+		alert("Password must be at least 6 character and contains at least 1 lowercase, uppercase, special character");
+		return false;
+	}
+	return true;
 }
 
 function showLogin()
@@ -98,7 +108,7 @@ function showRegistration()
   	
 }
 
-function changeTab(evt, cityName) {
+function changeTab(evt, tabName) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -115,7 +125,7 @@ function changeTab(evt, cityName) {
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
@@ -127,7 +137,6 @@ $("document").ready(function() {
 	resetRegistrationForm();
 	resetLoginForm();
 
-	document.getElementsByClassName("tabcontent")[0].style.display = "block";
 
 	$(window).click(function(e) {
 		if(e.target == modal)
@@ -137,6 +146,9 @@ $("document").ready(function() {
 	var modal = document.getElementById('myModal');
 	$("#forgot-username-password-link").click(function(){
 		modal.style.display = "block";
+		document.getElementsByClassName("tabcontent")[0].style.display = "block";
+		var tab1 = document.getElementById("tab1");
+		tab1.className += " active";
 	});
 
 	$("#next-div").click(function(e){
@@ -161,6 +173,14 @@ $("document").ready(function() {
 	    	showLogin();
 	    else if(key == 37)
 	    	showRegistration();
+	    else if(key == 27) {
+	    	var tab1 = document.getElementById("tab1");
+	    	if(tab1.className.includes("active")) {
+	    		document.getElementById('myModal').style.display = "none";
+	    		tab1.className = tab1.className.replace(" active", "");
+	    	}
+	    	$(document).focus();
+	    }
 	});
 
 
@@ -239,7 +259,50 @@ $("document").ready(function() {
 				}
 			}
 		});
+
 	});
+
+	$("#forgot-username-form").submit(function(e) {
+		e.preventDefault();
+		var email = $("#forgot-username-email").val();
+		if(!ValidateEmail(email)) {
+			return;
+		}
+
+		$.ajax({
+			url: 'forgotUsername.php',
+			type: "POST",
+			data: {email: email},
+			success: function(response) {
+				console.log(response);
+			}
+		});
+
+    	var tab1 = document.getElementById("tab1");
+    	if(tab1.className.includes("active")) {
+    		document.getElementById('myModal').style.display = "none";
+    		tab1.className = tab1.className.replace(" active", "");
+    	}
+    	$(document).focus();
+	});
+
+	$("#forgot-password-form").submit(function(e) {
+		e.preventDefault();
+		var email = $("#forgot-password-email").val();
+		if(!ValidateEmail(email)) {
+			return;
+		}
+
+
+
+    	var tab2 = document.getElementById("tab2");
+    	if(tab2.className.includes("active")) {
+    		document.getElementById('myModal').style.display = "none";
+    		tab2.className = tab2.className.replace(" active", "");
+    	}
+    	$(document).focus();
+	});
+
 
 });
 

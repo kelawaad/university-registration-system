@@ -15,6 +15,7 @@
 		
 	</head>
 
+
 	<body>
 		<header id="main-header">
 			<div class="container">
@@ -24,7 +25,7 @@
 		<div id="myModal" class="modal">
 		 	<div class="modal-content">
 		    	<div class="tab">
-					<button class="tablinks active" onclick="changeTab(event, 'Username')">Forgot Username</button>
+					<button class="tablinks" id="tab1" onclick="changeTab(event, 'Username')">Forgot Username</button>
 					<button class="tablinks" onclick="changeTab(event, 'Password')">Forgot Password</button>
 				</div>
 
@@ -33,20 +34,20 @@
 				  	<h2>Email</h2>
 				  	<input type="text" name="forgot-username-email" id="forgot-username-email" placeholder="Email"/>
 				  	<br/>
-				  	<button id="forgot-username-password-submit">Submit</button>
+				  	<input type="submit" id="forgot-username-submit"></button>
 				  </form>
 				  
 				</div>
 
 				<div id="Password" class="tabcontent">
-				  <form id="forgot-username-form">
+				  <form id="forgot-password-form">
 				  	<h2>Email</h2>
 				  	<input type="text" name="forgot-password-email" id="forgot-password-email" placeholder="Email"/>
 				  	<br/>
 				  	<h2>Username</h2>
 				  	<input type="text" name="forgot-password-username" id="forgot-password-username" placeholder="Username"/>
 				  	<br/>
-				  	<button id="forgot-username-password-submit">Submit</button>
+				  	<input type="submit" id="forgot-password-submit"></button>
 				  </form>
 				</div>
 	  		</div>
