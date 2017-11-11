@@ -79,11 +79,17 @@ th, td {
     background-color: rgba(0,0,0,0.4);
 }
 
+.modal input {
+	margin: 0 auto;
+	margin-left: 30%;
+}
+
 .modal-content {
     background-color: #fefefe;
     margin: 18% auto;
     padding: 20px;
     border: 1px solid #888;
+    border-radius: 10px;
     width: 70%;
 }
 
@@ -93,6 +99,8 @@ th, td {
 	line-height: 1.5em;
 	cursor: default;
 }
+
+
 
 button {
 	font-size:13px;

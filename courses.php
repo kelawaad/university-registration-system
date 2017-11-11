@@ -4,7 +4,6 @@
 	{
 		header("Location: registration.php");
 		die();
-		//echo '<script type="text/javascript">window.location.href="registration.php"</script>';
 	}
 
 	$username = $_SESSION["username"];

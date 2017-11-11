@@ -15,6 +15,7 @@ body {
 	margin-bottom: 2%;
 	height: 62px;
 	cursor: default;
+	min-width: 880px;
 }
 
 .container {
@@ -88,3 +89,25 @@ td:last-child {
 	padding-left: 0px;
 }
 
+
+
+header h2 {
+	position: absolute;
+	display:inline;
+	margin: 15px auto;
+	left:36%;
+	width:30%;
+}
+
+header p {
+	position: absolute;
+	display: inline;
+	float: right;
+	right:0px;
+	padding:18px;
+	margin: 0px 0px;
+}
+
+header p:hover {
+	background-color: #888;
+}

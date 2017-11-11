@@ -20,6 +20,36 @@
 				<h3 unselectable="on" onselectstart="return false;" onmousedown="return false;">Alexandria University</h3>
 			</div>
 		</header>
+		<div id="myModal" class="modal">
+		 	<div class="modal-content">
+		    	<div class="tab">
+					<button class="tablinks active" onclick="changeTab(event, 'Username')">Forgot Username</button>
+					<button class="tablinks" onclick="changeTab(event, 'Password')">Forgot Password</button>
+				</div>
+
+				<div id="Username" class="tabcontent">
+				  <form id="forgot-username-form">
+				  	<h2>Email</h2>
+				  	<input type="text" name="forgot-username-email" id="forgot-username-email" placeholder="Email"/>
+				  	<br/>
+				  	<button id="forgot-username-password-submit">Submit</button>
+				  </form>
+				  
+				</div>
+
+				<div id="Password" class="tabcontent">
+				  <form id="forgot-username-form">
+				  	<h2>Email</h2>
+				  	<input type="text" name="forgot-password-email" id="forgot-password-email" placeholder="Email"/>
+				  	<br/>
+				  	<h2>Username</h2>
+				  	<input type="text" name="forgot-password-username" id="forgot-password-username" placeholder="Username"/>
+				  	<br/>
+				  	<button id="forgot-username-password-submit">Submit</button>
+				  </form>
+				</div>
+	  		</div>
+		</div>
 		<div id="forms-div">
 			<div id="previous-div">
 				<img src="images/left-arrow.jpg" id="previous"/>
@@ -54,9 +84,6 @@
 				</form>
 					<a href="#" id="forgot-username-password-link">Forgot Username/Password</a>
 			</div>
-
-
-			
 		</div>
 	</body>
 
