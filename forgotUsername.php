@@ -1,4 +1,7 @@
 <?php
+	
+
+
 
 	$servername = "localhost";
 	$db_username   = "root";
@@ -21,8 +24,12 @@
 	}
 
 	if($username != null) {
+		echo "0";
+		
 		$subject = "Alexandria University | Account Restore";
 		mail($email, $subject, "Hello User,\nThis is the username associated with this email: ".$username."\n\nBest Regards,\nAlexandria University IT support.");
+	} else {
+		echo "1";
 	}
 
 ?>

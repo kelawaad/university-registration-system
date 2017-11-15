@@ -129,6 +129,32 @@ function changeTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
+function resetForgotUsernamePasswordWindow() {
+	
+	$("#forgot-username-form").each(function() {
+		this.reset();
+	});
+	$("#forgot-password-form").each(function() {
+		this.reset();
+	});
+	tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+}
+
+function closeForgotUsernamePasswordWindow() {
+	resetForgotUsernamePasswordWindow();
+	var modal = document.getElementById('myModal');
+	modal.style.display = "none";
+}
+
 
 $("document").ready(function() {
 	$("#login-form-div").hide();
@@ -139,8 +165,10 @@ $("document").ready(function() {
 
 
 	$(window).click(function(e) {
-		if(e.target == modal)
+		if(e.target == modal) {
 			modal.style.display = "none";
+			resetForgotUsernamePasswordWindow();
+		}
 	});
 
 	var modal = document.getElementById('myModal');
@@ -174,11 +202,7 @@ $("document").ready(function() {
 	    else if(key == 37)
 	    	showRegistration();
 	    else if(key == 27) {
-	    	var tab1 = document.getElementById("tab1");
-	    	if(tab1.className.includes("active")) {
-	    		document.getElementById('myModal').style.display = "none";
-	    		tab1.className = tab1.className.replace(" active", "");
-	    	}
+	    	closeForgotUsernamePasswordWindow();
 	    	$(document).focus();
 	    }
 	});
@@ -274,32 +298,49 @@ $("document").ready(function() {
 			type: "POST",
 			data: {email: email},
 			success: function(response) {
-				console.log(response);
+				if(response === "0") {
+					//success
+					alert("A mail will be sent to your inbox within a few minutes");
+					closeForgotUsernamePasswordWindow();
+				} else if(response === "1") {
+					//failure
+					alert("This email is not associated with any of the accounts.\nPlease try again.");
+				}
 			}
 		});
 
-    	var tab1 = document.getElementById("tab1");
-    	if(tab1.className.includes("active")) {
-    		document.getElementById('myModal').style.display = "none";
-    		tab1.className = tab1.className.replace(" active", "");
-    	}
     	$(document).focus();
 	});
 
 	$("#forgot-password-form").submit(function(e) {
 		e.preventDefault();
 		var email = $("#forgot-password-email").val();
+		var username = $("#forgot-password-username").val();
 		if(!ValidateEmail(email)) {
 			return;
 		}
+		if(username === null || username === "") {
+			alert("Please enter a Username");
+			return;
+		}
 
+		$.ajax({
+			url: 'forgotPassword.php',
+			type: 'POST',
+			data: {email:email, username:username},
+			success:function(response) {
+				console.log(response);
+				if(response === "0") {
+					alert("A mail will be sent to your inbox within a few minutes");
+					closeForgotUsernamePasswordWindow();
 
-
-    	var tab2 = document.getElementById("tab2");
-    	if(tab2.className.includes("active")) {
-    		document.getElementById('myModal').style.display = "none";
-    		tab2.className = tab2.className.replace(" active", "");
-    	}
+				} else if(response === "1") {
+					alert("The data you entered is invalid:\n1- Either this username is not asscoiated with this account\n2- The email or username doesn't exist.");
+				}
+			}
+		});
+		
+		
     	$(document).focus();
 	});
 

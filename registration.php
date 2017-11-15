@@ -26,13 +26,13 @@
 		 	<div class="modal-content">
 		    	<div class="tab">
 					<button class="tablinks" id="tab1" onclick="changeTab(event, 'Username')">Forgot Username</button>
-					<button class="tablinks" onclick="changeTab(event, 'Password')">Forgot Password</button>
+					<button class="tablinks" id="tab2" onclick="changeTab(event, 'Password')">Forgot Password</button>
 				</div>
 
 				<div id="Username" class="tabcontent">
 				  <form id="forgot-username-form">
 				  	<h2>Email</h2>
-				  	<input type="text" name="forgot-username-email" id="forgot-username-email" placeholder="Email"/>
+				  	<input type="text" name="username" id="forgot-username-email" placeholder="Email"/>
 				  	<br/>
 				  	<input type="submit" id="forgot-username-submit"></button>
 				  </form>
@@ -42,10 +42,10 @@
 				<div id="Password" class="tabcontent">
 				  <form id="forgot-password-form">
 				  	<h2>Email</h2>
-				  	<input type="text" name="forgot-password-email" id="forgot-password-email" placeholder="Email"/>
+				  	<input type="text" name="email" id="forgot-password-email" placeholder="Email"/>
 				  	<br/>
 				  	<h2>Username</h2>
-				  	<input type="text" name="forgot-password-username" id="forgot-password-username" placeholder="Username"/>
+				  	<input type="text" name="username" id="forgot-password-username" placeholder="Username"/>
 				  	<br/>
 				  	<input type="submit" id="forgot-password-submit"></button>
 				  </form>
