@@ -35,17 +35,32 @@
 			echo "1";
 		}
 		else {
-			echo "0";
 			$token = generateRandomString();;
+			$insertionQuery = "INSERT INTO token(token, user_id) VALUES ('$token', '$user_id');";			
+			$insertionResult = $conn->query($insertionQuery);
+			if($insertionResult === null || $insertionResult === false)
+			{
+				die("Connection failed");
+				echo "2";
+			} else {
+				echo "0";
+			}
 			
-			
-			$data[] = Array($token=>$username);
 
-			$inp = file_get_contents('tokens.json');
-			$tempArray = json_decode($inp);
-			array_push($tempArray, $data);
-			$jsonData = json_encode($tempArray);
-			file_put_contents('tokens.json', $jsonData);
+			// $fp = fopen('tokens.json', 'r+');
+			// $inp = file_get_contents('tokens.json');
+			// $tempArray = json_decode($inp);
+			// $jsonData = $tempArray;
+			// if($tempArray !== null) {
+			// 	$data = Array($token=>$username);
+			// 	array_push($tempArray, $data);
+			// 	$jsonData = json_encode($tempArray);
+			// } else {
+			// 	$data[] = Array($token=>$username);
+			// 	$jsonData = json_encode($data);
+			// }
+			// file_put_contents('tokens.json', $jsonData);
+			// fclose($fp);
 			// $fp = fopen('tokens.json', 'r+');
 			// $jsonString = file_get_contents('tokens.json');
 			// $data = json_decode($jsonString);

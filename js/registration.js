@@ -57,7 +57,7 @@ function ValidateEmail(mail)
 }  
 
 function validatePassword(password) {
-	var patt1 = new RegExp("[!@#$%^&*()><?/`~+=_-}{']");
+	var patt1 = new RegExp("[!@#$%&*()><?/`~+=_-}{']");
 	var patt2 = new RegExp("[0-9]");
 	var patt3 = new RegExp("[a-z]");
 	var patt4 = new RegExp("[A-Z]");

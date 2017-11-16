@@ -1,4 +1,4 @@
-use registrationSystem;
+use registrationsystem;
 
 	Create Table Department(
 		dept_id int Auto_Increment,
@@ -12,6 +12,7 @@ use registrationSystem;
 		password varchar(50) not null,
 		email varchar(30) unique not null,
 		dept_id int,
+		timestamp TIMESTAMP not null default CURRENT_TIMESTAMP,
 		PRIMARY key(user_id),
 		Foreign key(dept_id) REFERENCES Department(dept_id)
 	);
@@ -24,6 +25,13 @@ use registrationSystem;
 		dept_id int,
 		PRIMARY key(course_code),
 		Foreign key(dept_id) REFERENCES Department(dept_id)
+	);
+
+	Create Table Token(
+		token varchar(30) unique not null,
+		user_id  int not null,
+		PRIMARY KEY(token),
+		Foreign key(user_id) REFERENCES User(user_id)
 	);
 	
 	INSERT into Department (dept_name) values ('Computer & Communications');
@@ -71,6 +79,6 @@ use registrationSystem;
 	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS302d', 'Accounting', 'Haybat', 2, 6);
 	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS101', 'English Language', 'Maha Hegazy', 2, 6);
 	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS102', 'Human Rights', 'Nehal', 1, 6);
-	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS402a', 'History of Engineering Sciences', 'Nehal', 1, 6);
+	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS402b', 'History of Engineering Sciences', 'Nehal', 1, 6);
 	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS301', 'Project Management', 'Remon Fayek', 2, 6);
 	INSERT into Course (course_code, course_name, instructor_name, credit_hours, dept_id) VALUES ('HS201', 'Technical Writing', 'Ahmed Emad', 2, 6);
