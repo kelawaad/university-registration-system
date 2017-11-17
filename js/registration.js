@@ -19,8 +19,14 @@ function validateRegistrationForm() {
 		alert("Please enter a password! ");
 		return false;
 	}
-	 if(!ValidateEmail(email) || !validatePassword(password))
-	 	return false;
+	 if(!ValidateEmail(email)) {
+		alert("Please enter a valid email");
+		return false;
+	 }
+	 if(!validatePassword(password)) {
+		alert("Password must be at least 8 character and contains at least 1 lowercase, uppercase, special character");
+		return false;
+	 }
 	return true;
 }
 
@@ -45,28 +51,13 @@ function validateLoginForm() {
 function ValidateEmail(mail)   
 {  
 	var patt1 = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
- 	if (patt1.test(mail))  
-  	{  
-    	return true;  
-  	} 
-  	else 
-  	{ 
-    	alert("You have entered an invalid email address!");  
-    	return false;
-	}
-}  
+	return patt1.test(mail);
+}
 
 function validatePassword(password) {
-	var patt1 = new RegExp("[!@#$%&*()><?/`~+=_-}{']");
-	var patt2 = new RegExp("[0-9]");
-	var patt3 = new RegExp("[a-z]");
-	var patt4 = new RegExp("[A-Z]");
-	if(!patt1.test(password) || !patt2.test(password) || !patt3.test(password) || !patt4.test(password) || password.length < 6)
-	{
-		alert("Password must be at least 6 character and contains at least 1 lowercase, uppercase, special character");
-		return false;
-	}
-	return true;
+	var regExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+	return regExp.test(password);
+
 }
 
 function showLogin()

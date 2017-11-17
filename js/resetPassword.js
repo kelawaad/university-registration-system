@@ -15,9 +15,8 @@ function validateFrom() {
 		alert("Your password don't match!");
 		return false;
 	}
-	if(!validatePassword()) {
-		alert("Password must be at least 6 character and contains at least 1 lowercase, uppercase, special character");
-		console.log(password);
+	if(!validatePassword(password)) {
+		alert("Password must be at least 8 character and contains at least 1 lowercase, uppercase, special character");
 		return false;
 	}
 	return true;
@@ -25,13 +24,9 @@ function validateFrom() {
 }
 
 function validatePassword(password) {
-	var patt1 = new RegExp("[!@#$%&*()><?/`~+=_-}{']");
-	var patt2 = new RegExp("[0-9]");
-	var patt3 = new RegExp("[a-z]");
-	var patt4 = new RegExp("[A-Z]");
-	if(!patt2.test(password) || !patt3.test(password) || !patt4.test(password) || password.length < 6)
-		return false;
-	return true;
+	var regExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+	return regExp.test(password);
+
 }
 
 $("document").ready(function() {
@@ -46,7 +41,7 @@ $("document").ready(function() {
 		$.ajax({
 			url: 'changePassword.php',
 			method: 'POST',
-			data: {user_id: user_id, new_password:password},
+			data: {user_id: user_id, new_password:password, token: token},
 			success: function(response) {
 				if(response === "1") {
 					alert("An error has occured please try again later");

@@ -1,6 +1,7 @@
 <?php 
 	$user_id = $_POST['user_id'];
 	$new_password = $_POST['new_password'];
+	$token = $_POST['token'];
 
 	$servername = "localhost";
 	$db_username   = "root";
@@ -20,6 +21,11 @@
 		echo "1";
 	} else {
 		echo "0";
+		$deleteTokenQuery = "DELETE from token WHERE token='$token'";
+		$deleteResult = $conn->query($deleteTokenQuery);
+		if($deleteResult === FALSE) {
+			die("Deletion failed");
+		}
 	}
 
 

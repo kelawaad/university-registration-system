@@ -30,11 +30,9 @@
 	if(mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$user_id = $row['user_id'];
-		$deleteTokenQuery = "DELETE from token WHERE token='$token'";
-		$deleteResult = $conn->query($deleteTokenQuery);
-		if($deleteResult === FALSE) {
-			die("Deletion failed");
-		}
+	}
+	else {
+		header("Location:registration.php");
 	}
 	$getUserQuery = "SELECT * from user WHERE user_id='$user_id'";
 	$result = $conn->query($getUserQuery);
@@ -61,7 +59,7 @@
 		<link rel="stylesheet"  href="css/resetPassword.css">
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="js/resetPassword.js"></script>
-		<script type="text/javascript"><?php echo 'let user_id ='.$user_id; ?></script>
+		<script type="text/javascript"><?php echo 'let user_id ='.$user_id.';'; echo 'let token = "'.$token.'";'; ?></script>
 	</head>
 
 	<body>
