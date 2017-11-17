@@ -95,15 +95,15 @@ header h2 {
 	position: absolute;
 	display:inline;
 	margin: 15px auto;
-	left:36%;
-	width:30%;
+	left: 28%;
+    width: 45%;
 }
 
 header p {
 	position: absolute;
 	display: inline;
-	float: right;
 	right:0px;
+	width: 5%;
 	padding:18px;
 	margin: 0px 0px;
 }

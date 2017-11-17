@@ -3,6 +3,11 @@ var dept_id;
 var current_department_index;
 
 $("document").ready(function() {
+
+	$("#logout-link").click(function() {
+		window.location.href = "logout.php";
+	});
+
 	current_department_index = -1;
 	$("td").click(function(e) {
 		let row_id = e.target.id;

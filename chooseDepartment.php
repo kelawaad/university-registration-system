@@ -60,7 +60,8 @@
 	<body>
 		<header id="main-header">
 			<div class="container">
-				<h3 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h3>
+				<h2 unselectable="on" onselectstart="return false;" onmousedown="return false;"><?php echo 'Welcome '.$username; ?></h2>
+				<p id="logout-link">Logout</p>
 			</div>
 		</header>
 
